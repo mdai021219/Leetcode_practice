@@ -20,3 +20,47 @@ class Solution {
         }
     }
 }
+
+//*
+import java.util.*;
+public class Main
+{
+    private static String[] map = {"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    // 路径
+    private static StringBuilder sb = new StringBuilder();
+    // 结果集
+    private static List<String> res = new ArrayList<>();
+    public static List<String> letterCombinations(String digits) {
+        if(digits == null || digits.length() == 0) return res;
+        backtrack(digits,0);
+        return res;
+    }
+	public static void main(String[] args) {
+        
+        for(String i:letterCombinations("23"))
+        {
+            System.out.print(i+",");
+        }
+    
+    
+	}
+	public static void backtrack(String digits,int index) {
+        if(sb.length() == digits.length()) {
+            res.add(sb.toString());
+            System.out.println(sb+" here");
+            return;
+        }
+        String val = map[digits.charAt(index)-'2'];
+        for(char ch:val.toCharArray()) {
+            sb.append(ch);
+                        System.out.println(sb+" there1");
+
+            backtrack(digits,index+1);
+            System.out.println(sb+" there2");
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
+}
+
+
+*//
